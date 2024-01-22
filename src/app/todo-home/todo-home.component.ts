@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { DynamicLayoutComponent, TableViewComponent } from 'shop-folder-component';
+import { DynamicLayoutComponent } from 'shop-folder-component';
 
 @Component({
   selector: 'app-todo-home',
   standalone: true,
-  imports: [TableViewComponent, DynamicLayoutComponent],
+  imports: [DynamicLayoutComponent],
   templateUrl: './todo-home.component.html',
   styleUrl: './todo-home.component.scss'
 })
