@@ -10,21 +10,22 @@ import 'ag-grid-enterprise';
 import { DEFAULT_COLUMNS, GROUP_BY_STATUS_COLUMNS } from '../view-columns';
 import { MatMenuModule } from '@angular/material/menu';
 
-const TodoPageViews: IGridView[] = [
-  DEFAULT_COLUMNS,
-  GROUP_BY_STATUS_COLUMNS,
-  // GROUP_BY_NAME_COLUMNS
-];
+const TodoPageViews: IGridView[] = [DEFAULT_COLUMNS, GROUP_BY_STATUS_COLUMNS];
 
 @Component({
   selector: 'app-todo-home',
   standalone: true,
-  imports: [CommonModule, DynamicLayoutComponent, MatIconModule, AgGridModule, MatMenuModule],
+  imports: [
+    CommonModule,
+    DynamicLayoutComponent,
+    MatIconModule,
+    AgGridModule,
+    MatMenuModule,
+  ],
   templateUrl: './todo-home.component.html',
   styleUrl: './todo-home.component.scss',
 })
-export class TodoHomeComponent extends GridService<ITodo> implements OnInit
-{
+export class TodoHomeComponent extends GridService<ITodo> implements OnInit {
   override handleSelectModeOn(): void {
     throw new Error('Method not implemented.');
   }
@@ -42,73 +43,72 @@ export class TodoHomeComponent extends GridService<ITodo> implements OnInit
   loadDummyData() {
     this.data = [];
     const realNames = [
-      "Saurabh Kumar",
-      "Diksha Bharti",
-      "John Doe",
-      "Shikhar",
-      "Mahendra Singh Dhoni",
-      "Alice Johnson",
-      "Bob Smith",
-      "Catherine Brown",
-      "David Miller",
-      "Shikhar",
-      "Mahendra Singh Dhoni",
-      "Alice Johnson",
-      "Bob Smith",
-      "Catherine Brown",
-      "David Miller",
-      "Shikhar",
-      "Mahendra Singh Dhoni",
-      "Alice Johnson",
-      "Bob Smith",
-      "Catherine Brown",
-      "David Miller",
-      "Emily Davis",
-      "Frank Wilson",
-      "Grace Martinez",
-      "Henry Taylor",
-      "Isabel Anderson",
-      "Jack White",
-      "Katherine Harris",
-      "Liam Martin",
-      "Mia Thompson",
-      "Nathan Jackson",
-      "Olivia Garcia",
-      "Peter Robinson",
-      "Quinn Lee",
-      "Rachel Turner",
-      "Samuel Harris",
-      "Liam Martin",
-      "Mia Thompson",
-      "Nathan Jackson",
-      "Olivia Garcia",
-      "Peter Robinson",
-      "Quinn Lee",
-      "Rachel Turner",
-      "Samuel Harris",
-      "Sophia Martinez",
-      "Thomas Clark",
+      'Saurabh Kumar',
+      'Diksha Bharti',
+      'John Doe',
+      'Shikhar',
+      'Mahendra Singh Dhoni',
+      'Alice Johnson',
+      'Bob Smith',
+      'Catherine Brown',
+      'David Miller',
+      'Shikhar',
+      'Mahendra Singh Dhoni',
+      'Alice Johnson',
+      'Bob Smith',
+      'Catherine Brown',
+      'David Miller',
+      'Shikhar',
+      'Mahendra Singh Dhoni',
+      'Alice Johnson',
+      'Bob Smith',
+      'Catherine Brown',
+      'David Miller',
+      'Emily Davis',
+      'Frank Wilson',
+      'Grace Martinez',
+      'Henry Taylor',
+      'Isabel Anderson',
+      'Jack White',
+      'Katherine Harris',
+      'Liam Martin',
+      'Mia Thompson',
+      'Nathan Jackson',
+      'Olivia Garcia',
+      'Peter Robinson',
+      'Quinn Lee',
+      'Rachel Turner',
+      'Samuel Harris',
+      'Liam Martin',
+      'Mia Thompson',
+      'Nathan Jackson',
+      'Olivia Garcia',
+      'Peter Robinson',
+      'Quinn Lee',
+      'Rachel Turner',
+      'Samuel Harris',
+      'Sophia Martinez',
+      'Thomas Clark',
     ];
 
     const todoName = [
-      "Todo Shop folder",
-      "First Book",
-      "Client central",
-      "Data Sync Direct",
-      "Quickstart",
-      "Observability"
+      'Todo Shop folder',
+      'First Book',
+      'Client central',
+      'Data Sync Direct',
+      'Quickstart',
+      'Observability',
     ];
 
-    const todoStatus = [
-      "backlog",
-      "pending",
-      "completed"
-    ]
+    const todoStatus = ['backlog', 'pending', 'completed'];
     for (let i = 0; i < 56; i++) {
-      let _id = `+91 ${Math.floor(Math.random() * 10000000000).toString().padStart(10, '0')}`;
+      let _id = `+91 ${Math.floor(Math.random() * 10000000000)
+        .toString()
+        .padStart(10, '0')}`;
       let groupname = realNames[Math.floor(Math.random() * realNames.length)];
       let todoname = todoName[Math.floor(Math.random() * todoName.length)];
-      let todostatus = todoStatus[Math.floor(Math.random() * todoStatus.length)];
+      let todostatus =
+        todoStatus[Math.floor(Math.random() * todoStatus.length)];
       this.data.push(this.createTodo(groupname, todoname, todostatus));
     }
     this.data.sort((a, b) => a.name.localeCompare(b.name));
@@ -123,30 +123,7 @@ export class TodoHomeComponent extends GridService<ITodo> implements OnInit
       statusChangedOn: new Date(),
       statusHistory: [],
       createdOn: new Date(),
-      todoGroupName: groupname
-    })
+      todoGroupName: groupname,
+    });
   }
-
-  // createData() {
-  //   this.data.push({
-  //     createdBy: 0,
-  //     description: '',
-  //     createdOn: new Date(),
-  //     isSelected: false,
-  //     markSelected: () => console.log('mark selected'),
-  //     name: 'Todo1',
-  //     status: TodoStatuses.backlog,
-  //     statusChangedOn: new Date(),
-  //     statusHistory: [],
-  //     targetDate: new Date(),
-  //     todoGroupId: 2,
-  //     todoGroupName: 'First Book',
-  //     markUnselected: function (): void {
-  //       throw new Error('Function not implemented.');
-  //     },
-  //     toggleSelection: function (): void {
-  //       throw new Error('Function not implemented.');
-  //     }
-  //   });
-  // }
 }

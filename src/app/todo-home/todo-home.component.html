@@ -1,42 +1,34 @@
 <lib-dynamic-layout title="ToDo" backURL="/home" [hideDrawer]="true">
-  <!-- <ng-container selectaction>
-    @if(enableSelectedAction) {
-      <mat-icon>delete</mat-icon>
-    }
-  </ng-container> -->
-  <!-- <ng-container gridaction>
-    all grid buttons
-  </ng-container> -->
   <ng-container pagebody>
     @if (selectedView) {
     <ag-grid-angular class="table-view ag-theme-balham" [gridOptions]="grid" [rowData]="data"
-        [columnDefs]="selectedView.columnDefs" [defaultColDef]="defaultColDef" [groupDefaultExpanded]="1"
-        [groupSelectsChildren]="true" rowSelection="multiple" [autoGroupColumnDef]="selectedView.autoGroupColumnDef"
-        (gridReady)="onGridReady($event)" (selectionChanged)="onSelectionChanged()">
+      [columnDefs]="selectedView.columnDefs" [defaultColDef]="defaultColDef" [groupDefaultExpanded]="1"
+      [groupSelectsChildren]="true" rowSelection="multiple" [autoGroupColumnDef]="selectedView.autoGroupColumnDef"
+      (gridReady)="onGridReady($event)" (selectionChanged)="onSelectionChanged()">
     </ag-grid-angular>
     }
     @else {
     No view selected
     }
-</ng-container>
-<ng-container pagefooter>
-  <div class="footer">
+  </ng-container>
+  <ng-container pagefooter>
+    <div class="footer">
 
       <div class="views-menu">
-          <mat-icon [matMenuTriggerFor]="viewMenu">more_vert</mat-icon>
-          <mat-menu #viewMenu="matMenu">
-              @for (view of gridViews; track view.viewName) {
-              <button mat-menu-item (click)="updateSelectedView(view)" [ngClass]="{
+        <mat-icon [matMenuTriggerFor]="viewMenu">more_vert</mat-icon>
+        <mat-menu #viewMenu="matMenu">
+          @for (view of gridViews; track view.viewName) {
+          <button mat-menu-item (click)="updateSelectedView(view)" [ngClass]="{
                       'selected-view': selectedView?.viewName === view.viewName
                   }">
-                  <span>{{view.viewName}}</span>
-              </button>
-              }
-          </mat-menu>
+            <span>{{view.viewName}}</span>
+          </button>
+          }
+        </mat-menu>
       </div>
 
       <div class="view-current" [matMenuTriggerFor]="viewMenu">
-          {{ selectedView?.viewName }}
+        {{ selectedView?.viewName }}
       </div>
 
       <div class="spacer"></div>
@@ -47,6 +39,6 @@
       @else {
       <mat-icon (click)="expandAll()">toggle_on</mat-icon>
       }
-  </div>
-</ng-container>
+    </div>
+  </ng-container>
 </lib-dynamic-layout>
